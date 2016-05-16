@@ -12,7 +12,7 @@ class Bank_account
     add_deposit_to_transactions(amount, date)
   end
 
-  def withdrawal(amount, date)
+  def withdraw(amount, date)
     @balance -= amount
     add_withdrawal_to_transactions(amount, date)
   end
@@ -24,11 +24,11 @@ class Bank_account
   private
 
   def add_deposit_to_transactions(amount, date)
-    @transactions << date + " || " + amount.to_s + "0 || || #{@balance}0"
+    @transactions << date + " || #{sprintf("%.2f", amount)} || || #{sprintf("%.2f", @balance)}"
   end
 
   def add_withdrawal_to_transactions(amount, date)
-    @transactions << date + " || || " + amount.to_s + "0 || #{@balance}0"
+    @transactions << date + " || || #{sprintf("%.2f", amount)} || #{sprintf("%.2f", @balance)}"
   end
 
 end
